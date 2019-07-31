@@ -15,8 +15,10 @@ class Search extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
+    //https://www.googleapis.com/books/v1/volumes?q=time&printType=magazines&key=AIzaSyChQCwLNv3ZWkHi8OG5_UUszmgr9iguzHw`
+    //https://www.googleapis.com/books/v1/volumes?q=${this.props.term}=free-ebooks&key=AIzaSyChQCwLNv3ZWkHi8OG5_UUszmgr9iguzHw
 
-  fetch(`https://www.googleapis.com/books/v1/volumes?q=${this.props.term}=free-ebooks&key=AIzaSyChQCwLNv3ZWkHi8OG5_UUszmgr9iguzHw`, {
+  fetch(`https://www.googleapis.com/books/v1/volumes?q=${this.props.term}&printType=${this.props.printtype}&key=AIzaSyChQCwLNv3ZWkHi8OG5_UUszmgr9iguzHw`, {
       method: 'GET',
       headers: {
         "Accept": "application/json",

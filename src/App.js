@@ -46,7 +46,7 @@ class App extends React.Component {
   render() {
     console.log(this.state.books);
     const page = 
-    <Search term = {this.state.term} setTerm ={term => this.setTerm(term)} setprintType ={printtype => this.setprintType(printtype)}  setbookType ={booktype => this.setbookType(booktype)} setbooks ={books => this.setBooks(books)} />
+    <Search term = {this.state.term} printtype = {this.state.printtype} setTerm ={term => this.setTerm(term)} setprintType ={printtype => this.setprintType(printtype)}  setbookType ={booktype => this.setbookType(booktype)} setbooks ={books => this.setBooks(books)} />
 
     return (
       <div className="App">
