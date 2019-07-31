@@ -5,17 +5,18 @@ class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      /*
       title: "",
       url: "",
       description: "",
-      rating: 1
+      rating: 1*/
     };
   }
   handleSubmit(e) {
     e.preventDefault();
 
 
-  fetch("https://www.googleapis.com/books/v1/volumes?q=flowers&filter=free-ebooks&key=AIzaSyChQCwLNv3ZWkHi8OG5_UUszmgr9iguzHw", {
+  fetch(`https://www.googleapis.com/books/v1/volumes?q=${this.props.term}=free-ebooks&key=AIzaSyChQCwLNv3ZWkHi8OG5_UUszmgr9iguzHw`, {
       method: 'GET',
       headers: {
         "Accept": "application/json",
@@ -51,7 +52,7 @@ class Search extends Component {
                name="title" 
                id="title" 
                placeholder="Title"
-               value={this.state.title}
+               value={this.props.term}
                onChange={e => this.changeSelection(e.target.value)}/>
            <label htmlFor="printType">Print Type</label>
              <select

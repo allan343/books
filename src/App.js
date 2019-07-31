@@ -2,6 +2,7 @@ import React from 'react';
 //import logo from './logo.svg';
 //import './App.css';
 import Search from './Search';
+import BookList from './BookList';
 
 class App extends React.Component {
 
@@ -45,17 +46,12 @@ class App extends React.Component {
   render() {
     console.log(this.state.books);
     const page = 
-    <Search  setTerm ={term => this.setTerm(term)} setprintType ={printtype => this.setprintType(printtype)}  setbookType ={booktype => this.setbookType(booktype)} setbooks ={books => this.setBooks(books)} />
-    
-    /* this.state.showAddForm
-          ? <AddBookmark 
-                 showForm={show => this.setShowAddForm(show)} 
-                 handleAdd={bookmark => this.addBookmark(bookmark)}/>
-          : <BookmarkApp bookmarks={this.state.bookmarks} showForm={show => this.setShowAddForm(show)}/>; */
+    <Search term = {this.state.term} setTerm ={term => this.setTerm(term)} setprintType ={printtype => this.setprintType(printtype)}  setbookType ={booktype => this.setbookType(booktype)} setbooks ={books => this.setBooks(books)} />
 
     return (
       <div className="App">
         { page }
+        <BookList books = {this.state.books} />
       </div>
     );
   }
