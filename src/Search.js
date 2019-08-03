@@ -12,15 +12,17 @@ class Search extends Component {
       rating: 1*/
     };
   }
+
+ 
   handleSubmit(e) {
     e.preventDefault();
 
     //https://www.googleapis.com/books/v1/volumes?q=time&printType=magazines&key=AIzaSyChQCwLNv3ZWkHi8OG5_UUszmgr9iguzHw`
     //https://www.googleapis.com/books/v1/volumes?q=${this.props.term}=free-ebooks&key=AIzaSyChQCwLNv3ZWkHi8OG5_UUszmgr9iguzHw
 
-    const url = `https://www.googleapis.com/books/v1/volumes?q=${this.props.term}&printType=${this.props.printtype}&key=AIzaSyChQCwLNv3ZWkHi8OG5_UUszmgr9iguzHw`;
+    const url = `https://www.googleapis.com/books/v1/volumes?q=${this.props.term}&filter=${this.props.booktype}&printType=${this.props.printtype}&key=AIzaSyChQCwLNv3ZWkHi8OG5_UUszmgr9iguzHw`;
     console.log("url is " + url);
-    fetch(`https://www.googleapis.com/books/v1/volumes?q=${this.props.term}&printType=${this.props.printtype}&key=AIzaSyChQCwLNv3ZWkHi8OG5_UUszmgr9iguzHw`, {
+    fetch(url, {
       method: 'GET',
       headers: {
         "Accept": "application/json",
@@ -33,7 +35,7 @@ class Search extends Component {
   }
 
   changeSelection(value) {
-   
+    console.log("your selection is " + value);
       this.props.setTerm(value);
     }
 
@@ -42,6 +44,7 @@ class Search extends Component {
       this.props.setprintType(value);
     }
     changeBook(value) {
+      console.log("booktype is" + value);
       this.props.setbookType(value);
     }
 
@@ -74,7 +77,7 @@ class Search extends Component {
                name="bookType"
                onChange={e => this.changeBook(e.target.value)}>
                <option value="partial">partial</option>
-               <option value="full">full</option>
+               <option selected value="full">full</option>
                <option value="free-ebooks">free-ebooks</option>
                <option value="paid-ebooks">paid-ebooks</option>
                <option value="ebooks">ebooks</option>

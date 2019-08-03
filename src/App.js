@@ -11,13 +11,17 @@ class App extends React.Component {
     this.state = {
       books: [],
       term: "",
-      printtype: "",
-      booktype: ""
+      printtype: "magazines",
+      booktype: "full"
 
     };
   }
  
   setBooks(books){
+   if(!books)
+   {
+     return;
+   }
     this.setState({
       books
     });
@@ -46,7 +50,7 @@ class App extends React.Component {
   render() {
     console.log(this.state.books);
     const page = 
-    <Search term = {this.state.term} printtype = {this.state.printtype} setTerm ={term => this.setTerm(term)} setprintType ={printtype => this.setprintType(printtype)}  setbookType ={booktype => this.setbookType(booktype)} setbooks ={books => this.setBooks(books)} />
+    <Search term = {this.state.term} booktype = {this.state.booktype} printtype = {this.state.printtype} setTerm ={term => this.setTerm(term)} setprintType ={printtype => this.setprintType(printtype)}  setbookType ={booktype => this.setbookType(booktype)} setbooks ={books => this.setBooks(books)} />
 
     return (
       <div className="App">
