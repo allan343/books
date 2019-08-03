@@ -18,13 +18,16 @@ class Search extends Component {
     //https://www.googleapis.com/books/v1/volumes?q=time&printType=magazines&key=AIzaSyChQCwLNv3ZWkHi8OG5_UUszmgr9iguzHw`
     //https://www.googleapis.com/books/v1/volumes?q=${this.props.term}=free-ebooks&key=AIzaSyChQCwLNv3ZWkHi8OG5_UUszmgr9iguzHw
 
-  fetch(`https://www.googleapis.com/books/v1/volumes?q=${this.props.term}&printType=${this.props.printtype}&key=AIzaSyChQCwLNv3ZWkHi8OG5_UUszmgr9iguzHw`, {
+    const url = `https://www.googleapis.com/books/v1/volumes?q=${this.props.term}&printType=${this.props.printtype}&key=AIzaSyChQCwLNv3ZWkHi8OG5_UUszmgr9iguzHw`;
+    console.log("url is " + url);
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=${this.props.term}&printType=${this.props.printtype}&key=AIzaSyChQCwLNv3ZWkHi8OG5_UUszmgr9iguzHw`, {
       method: 'GET',
       headers: {
         "Accept": "application/json",
       }
     }).then((res)=>res.json())
     .then((json)=>{
+      console.log("json is "+json);
       this.props.setbooks(json.items);
     })
   }
@@ -35,7 +38,7 @@ class Search extends Component {
     }
 
     changePrint(value) {
-   
+      console.log("printtype is" + value);
       this.props.setprintType(value);
     }
     changeBook(value) {
@@ -63,7 +66,7 @@ class Search extends Component {
                onChange={e => this.changePrint(e.target.value)}>
                <option value="all">All</option>
                <option value="books">Books</option>
-               <option selected value="magazine">Magazine</option>
+               <option selected value="magazines">Magazines</option>
              </select>
              <label htmlFor="bookType">Book Type</label>
              <select

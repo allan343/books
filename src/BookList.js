@@ -15,6 +15,7 @@ console.log("item is " +item);
     render()
     {
         const books = this.props.books;
+        console.log("books is " +this.props.books);
         return(
             
             <div className="App">
